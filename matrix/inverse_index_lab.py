@@ -1,8 +1,7 @@
 # version code d345910f07ae
 coursera = 1
 # Please fill out this stencil and submit using the provided submission script.
-
-
+import random
 
 
 
@@ -13,7 +12,7 @@ def movie_review(name):
     Input: the name of a movie
     Output: a string (one of the review options), selected at random using randint
     """
-    return ...
+    return name[random.randint(0, len(name) - 1)]
 
 
 
@@ -32,9 +31,23 @@ def makeInverseIndex(strlist):
     >>> makeInverseIndex(['hello world','hello','hello cat','hellolot of cats']) == {'hello': {0, 1, 2}, 'cat': {2}, 'of': {3}, 'world': {0}, 'cats': {3}, 'hellolot': {3}}
     True
     """
-    pass
+    wordlist = [item.split() for item in strlist]
+    unpack_wordlist = []
+    for words in wordlist:
+        for word in words:
+            unpack_wordlist.append(word)
+    wordset = set(unpack_wordlist)
+    dict_item = []
+    for word in wordset:
+        count_set = set()
+        for (i, item) in enumerate(strlist):
+            for k in item.split():
+                if word == k:
+                    count_set.add(i)
+                    break
+        dict_item.append(count_set)
 
-
+    return {x:y for (x, y) in list(zip(wordset, dict_item))}
 
 ## 3: (Task 3) Or Search
 def orSearch(inverseIndex, query):
@@ -49,7 +62,14 @@ def orSearch(inverseIndex, query):
     >>> orSearch(idx, ['Johann', 'Carl'])
     {0, 2, 3, 4, 5}
     """
-    pass
+    index_list = []
+    result = set()
+    for item in query:
+        index_list.append(inverseIndex[item])
+    result = index_list[0]
+    for i in range(len(index_list)):
+        result = index_list[i] | result
+    return result
 
 
 
@@ -66,5 +86,12 @@ def andSearch(inverseIndex, query):
     >>> andSearch(idx, ['Johann', 'Bach'])
     {0, 4}
     """
-    pass
+    index_list = []
+    result = set()
+    for item in query:
+        index_list.append(inverseIndex[item])
+    result = index_list[0]
+    for i in range(len(index_list)):
+        result = index_list[i] & result
+    return result
 
