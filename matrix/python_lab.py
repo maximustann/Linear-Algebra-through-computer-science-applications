@@ -37,13 +37,13 @@ first_five_pows_two = { 2 ** x for x in {0,1,2,3,4} }
 
 ## 7: (Task 7) Double comprehension evaluating to nine-element set
 X1 = {1, 2, 3}
-Y1 = {4, 5, 6}
+Y1 = {5, 6, 7}
 
 
 
 ## 8: (Task 8) Double comprehension evaluating to five-element set
-X2 = {1, 2}
-Y2 = {3, 5, 6}
+X2 = {1, 2, 4}
+Y2 = {3, 6, 12}
 
 
 
@@ -81,14 +81,14 @@ LofL_sum = sum([sum(x) for x in [[.25, .75, .1], [-1, 0], [4, 4, 4, 4]]])
 ## 13: (Task 13) Three-element tuples summing to zero
 S = {-4, -2, 1, 2, 5, 0}
 # Replace [ ... ] with a one-line list comprehension in which S appears
-zero_sum_list = [[x, y, z] for x in S for y in S for z in S if x + y + z == 0]
+zero_sum_list = [(x, y, z) for x in S for y in S for z in S if x + y + z == 0]
 
 
 
 ## 14: (Task 14) Nontrivial three-element tuples summing to zero
 S = {-4, -2, 1, 2, 5, 0}
 # Replace [ ... ] with a one-line list comprehension in which S appears
-exclude_zero_list = [[x, y, z] for x in S for y in S for z in S if x + y + z == 0 and (x != 0 or y != 0 or z != 0)]
+exclude_zero_list = [(x, y, z) for x in S for y in S for z in S if x + y + z == 0 and (x != 0 or y != 0 or z != 0)]
 
 
 
@@ -107,7 +107,7 @@ example_L = [1, 1, 2, 2, 3, 3]
 
 ## 17: (Task 17) Odd numbers
 # Replace {...} with a one-line set comprehension over a range of the form range(n)
-odd_num_list_range = list(range(1, 99, 2))
+odd_num_list_range = list(range(1, 100, 2))
 
 
 
@@ -149,7 +149,7 @@ value_list_modified_2 = [x[k] if k in x else 'NOT PRESENT' for x in dlist] # <--
 
 ## 22: (Task 22) A dictionary mapping integers to their squares
 # Replace {...} with a one-line dictionary comprehension
-square_dict = {x:x ** 2 for x in list(range(0, 99))}
+square_dict = {x:x**2 for x in list(range(0, 100))}
 
 
 
