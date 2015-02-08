@@ -10,7 +10,7 @@ minutes_in_week = 60 * 24 * 7
 
 
 ## 2: (Task 2) Remainder
-remainder_without_mod = 2304811.0/47 - 2304811//47
+remainder_without_mod = 2304811 - (47 * 2304811//47)
 
 
 ## 3: (Task 3) Divisibility
