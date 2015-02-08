@@ -5,15 +5,12 @@ coursera = 1
 
 
 
-
 ## 1: (Task 1) Minutes in a Week
 minutes_in_week = 60 * 24 * 7
 
 
-
 ## 2: (Task 2) Remainder
-remainder_without_mod = 2304811/47 - 2304811//47
-
+remainder_without_mod = 2304811.0/47 - 2304811//47
 
 
 ## 3: (Task 3) Divisibility
@@ -69,7 +66,7 @@ list_average = sum(list_of_numbers) / len(list_of_numbers)
 
 ## 11: (Task 11) Cartesian-product comprehension
 # Replace ... with a double list comprehension over {'A','B','C'} and {1,2,3}
-cartesian_product = [[x, y] for x in {}'A', 'B', 'C'} for y in {1, 2, 3}]
+cartesian_product = [[x, y] for x in {'A', 'B', 'C'} for y in {1, 2, 3}]
 
 
 
@@ -84,21 +81,21 @@ LofL_sum = sum([sum(x) for x in [[.25, .75, .1], [-1, 0], [4, 4, 4, 4]]])
 ## 13: (Task 13) Three-element tuples summing to zero
 S = {-4, -2, 1, 2, 5, 0}
 # Replace [ ... ] with a one-line list comprehension in which S appears
-zero_sum_list = [[x, y, z] for x in s for y in s for z in s if x + y + z == 0]
+zero_sum_list = [[x, y, z] for x in S for y in S for z in S if x + y + z == 0]
 
 
 
 ## 14: (Task 14) Nontrivial three-element tuples summing to zero
 S = {-4, -2, 1, 2, 5, 0}
 # Replace [ ... ] with a one-line list comprehension in which S appears
-exclude_zero_list = [[x, y, z] for x in s for y in s for z in s if x + y + z == 0 and (x != 0 or y != 0 or z != 0)]
+exclude_zero_list = [[x, y, z] for x in S for y in S for z in S if x + y + z == 0 and (x != 0 or y != 0 or z != 0)]
 
 
 
 ## 15: (Task 15) One nontrivial three-element tuple summing to zero
 S = {-4, -2, 1, 2, 5, 0}
 # Replace ... with a one-line expression that uses a list comprehension in which S appears
-first_of_tuples_list = [[x, y, z] for x in s for y in s for z in s if x + y + z == 0 and (x != 0 or y != 0 or z != 0)][0]
+first_of_tuples_list = [[x, y, z] for x in S for y in S for z in S if x + y + z == 0 and (x != 0 or y != 0 or z != 0)][0]
 
 
 
@@ -129,7 +126,6 @@ B = [1, 15, 20]
 # The comprehension should evaluate to a list whose ith element is the ith element of
 # A plus the ith element of B.
 list_sum_zip = [sum(x) for x in list(zip(A, B))]
-
 
 
 ## 20: (Task 20) Extracting the value corresponding to key k from each dictionary in a list
@@ -209,4 +205,3 @@ def dict2list(dct, keylist): return [dct[x] for x in keylist]
 # Example: list2dict(['A','B','C'],['a','b','c']) should equal {'a':'A', 'b':'B', 'c':'C'}
 # Complete the procedure definition by replacing { ... } with a one-line dictionary comprehension
 def list2dict(L, keylist): return {x:y for (x, y) in list(zip(keylist, L))}
-
