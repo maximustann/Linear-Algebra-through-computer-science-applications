@@ -15,7 +15,7 @@ def getitem(v,k):
     >>> v['b']
     0
     """
-    pass
+    return v.D[self]
 
 def setitem(v,k,val):
     """
@@ -31,7 +31,9 @@ def setitem(v,k,val):
     >>> v['a']
     1
     """
-    pass
+    if k not in v.D or v.f[k] != val:
+        v.f[k] = val
+    return 0
 
 def equal(u,v):
     """
