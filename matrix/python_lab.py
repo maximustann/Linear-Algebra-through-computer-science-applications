@@ -10,7 +10,7 @@ minutes_in_week = 60 * 24 * 7
 
 
 ## 2: (Task 2) Remainder
-remainder_without_mod = 2304811 - (47 * 2304811//47)
+remainder_without_mod = 2304811 - (47 * (2304811//47))
 
 
 ## 3: (Task 3) Divisibility
@@ -107,7 +107,7 @@ example_L = [1, 1, 2, 2, 3, 3]
 
 ## 17: (Task 17) Odd numbers
 # Replace {...} with a one-line set comprehension over a range of the form range(n)
-odd_num_list_range = list(range(1, 100, 2))
+odd_num_list_range = set([x for x in range(1, 100, 2)])
 
 
 

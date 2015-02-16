@@ -40,7 +40,7 @@ def inv_dict(d):
     >>> inv_dict({'goodbye':  'au revoir', 'thank you': 'merci'})
     {'merci':'thank you', 'au revoir':'goodbye'}]
     '''
-    return {keys:item for (item, keys) in d,items()}
+    return {keys:item for (item, keys) in d.items()}
 
 
 ## 3: (Problem 3) Nested Comprehension

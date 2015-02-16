@@ -23,8 +23,7 @@ RECEIPT_DIR = os.path.join('.', 'receipts');
 session    = 'matrix-002'
 grader_url = 'class.coursera.org/%s/assignment' % session
 static_url = 'courseratests.codingthematrix.com'
-challenge_url = 'https://class.coursera.org/%s/assignment/challenge' % session
-protocol = 'http'
+protocol = 'https'
 dry_run = False
 verbose = False
 show_submission = False
@@ -68,7 +67,7 @@ def check_signature(response):
 
 def get_asgn_data(asgn_name):
     try:
-        with urllib.request.urlopen('%s://%s/%s.tests'%(protocol, static_url, asgn_name)) as tf:
+        with urllib.request.urlopen('http://%s/%s.tests'%(static_url, asgn_name)) as tf:
             response = tf.read().decode('utf8').split('\n')
     except urllib.error.URLError:
         print("Could not find tests for this assignment.  Check your Internet connection.")
@@ -391,6 +390,8 @@ if __name__ == '__main__':
     location = args.location
     dry_run = args.dry_run
     if args.protocol: protocol = args.protocol
+    challenge_url = '%s://class.coursera.org/%s/assignment/challenge' % (protocol, session)
+    print("CHALLENGE URL ", challenge_url)
     verbose = args.verbose
     show_submission = args.show_submission
     show_feedback = args.show_feedback

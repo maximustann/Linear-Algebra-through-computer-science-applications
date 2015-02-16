@@ -33,7 +33,7 @@ def my_lists(L):
     >>> my_lists([0,3])
     [[], [1, 2, 3]]
     '''
-    return [[x for x in range(1, y + 1)] for y in l]
+    return [[x for x in range(1, y + 1)] for y in L]
     
 
 
@@ -136,7 +136,7 @@ Be sure your procedure works for the empty list.
     >>> myConcat(['what','is','up'])
     'whatisup'
     '''
-    current = []
+    current = ''
     for x in L:
         current = current + x
     return current
@@ -171,7 +171,7 @@ Be sure your procedure works for the empty list.
 complex_addition_a = 5 + 3j
 complex_addition_b = 1j
 complex_addition_c = -1 + .001j
-complex_addition_d = 4.001 + 3j
+complex_addition_d = .001 + 9j
 
 
 

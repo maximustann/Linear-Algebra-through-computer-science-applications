@@ -15,7 +15,10 @@ def getitem(v,k):
     >>> v['b']
     0
     """
-    return v.D[self]
+    try:
+        return v.f[k]
+    except KeyError:
+        return 0
 
 def setitem(v,k,val):
     """
@@ -31,7 +34,10 @@ def setitem(v,k,val):
     >>> v['a']
     1
     """
-    if k not in v.D or v.f[k] != val:
+    try:
+        if v.f[k] != val:
+            v.f[k] = val
+    except KeyError:
         v.f[k] = val
     return 0
 
@@ -63,7 +69,24 @@ def equal(u,v):
 
     """
     assert u.D == v.D
-    pass
+    for k in u.D:
+        try:
+            if u.f[k] != v.f[k]:
+                return False
+        except KeyError:
+            if k in u.f.keys():
+                if u.f[k] != 0:
+                    return False
+            elif k in v.f.keys():
+                if v.f[k] != 0:
+                    return False
+            else:
+                pass
+
+
+    return True
+
+
 
 def add(u,v):
     """
@@ -89,7 +112,18 @@ def add(u,v):
     True
     """
     assert u.D == v.D
-    pass
+    result = Vec(u.D, {})
+    for key in u.D:
+        try:
+            result.f[key] = u.f[key] + v.f[key]
+        except KeyError:
+            if key in u.f.keys():
+                result.f[key] = u.f[key]
+            elif key in v.f.keys():
+                result.f[key] = v.f[key]
+            else:
+                result.f[key] = 0
+    return result
 
 def dot(u,v):
     """
@@ -120,7 +154,10 @@ def dot(u,v):
     12
     """
     assert u.D == v.D
-    pass
+    result = 0
+    for key in u.D:
+        result = result + u.f[key] * v.f[key]
+    return result
 
 def scalar_mul(v, alpha):
     """

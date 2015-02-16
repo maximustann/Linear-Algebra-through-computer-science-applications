@@ -50,7 +50,7 @@ u_0100010 = {'b', 'c', 'd', 'e'}
 ## 5: (Problem 5) GF2 Vector Addition B
 # Use the same format as the previous problem
 
-v_0010010 = {'b', 'd'}
+v_0010010 = {'c', 'd'}
 v_0100010 = set()
 
 
@@ -63,15 +63,15 @@ x_gf2 = [1, 0, 0, 0]
 
 ## 7: (Problem 7) Formulating Equations using Dot-Product
 #Please provide each answer as a list of numbers
-v1 = [1, 1, -1, 1]
-v2 = [1, -6, 2, 0]
-v3 = [3, 1, 4, 1]
+v1 = [2, 3, -4, 1]
+v2 = [1, -5, 2, 0]
+v3 = [4, 1, -1, -1]
 
 
 
 ## 8: (Problem 8) Practice with Dot-Product
 uv_a = 5
 uv_b = 6
-uv_c = 5
+uv_c = 16 
 uv_d = -1
 
