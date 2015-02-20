@@ -96,7 +96,8 @@ def most_similar(sen, voting_dict):
         current = None
         new_dict = {sen:voting_dict[sen], s:voting_dict[s]}
         if s != sen:
-            if not privous:
+            if privous == None:
+                name = s
                 privous = policy_compare(sen, s, new_dict)
             current = policy_compare(sen, s, new_dict)
             if current > privous:
@@ -153,9 +154,14 @@ def find_average_similarity(sen, sen_set, voting_dict):
         >>> vd == {'Klein':[1,1,1], 'Fox-Epstein':[1,-1,0], 'Ravella':[-1,0,0], 'Oyakawa':[-1,-1,-1], 'Loery':[0,1,1]}
         True
     """
-    return ...
+    result = 0
+    for s in sen_set:
+        if sen != s:
+            new_dict = {sen:voting_dict[sen], s:voting_dict[s]}
+            result = result + policy_compare(sen, s, new_dict)
+    return result / (len(voting_dict) - 1)
 
-most_average_Democrat = ... # give the last name (or code that computes the last name)
+most_average_Democrat = "Biden" # give the last name (or code that computes the last name)
 
 
 
@@ -182,9 +188,15 @@ def find_average_record(sen_set, voting_dict):
         >>> find_average_record({'a'}, d)
         [0.0, 1.0, 1.0]
     """
-    return ...
+    result = [0 for x in range(len(list(voting_dict.values())[0]))]
+    for sen_name in sen_set:
+        for i, record in enumerate(voting_dict[sen_name]):
+            result[i] = result[i] + record
+    for i in range(len(result)):
+        result[i] = result[i] / len(sen_set)
+    return result
 
-average_Democrat_record = ... # give the vector as a list
+average_Democrat_record = [] # give the vector as a list
 
 
 
@@ -201,5 +213,21 @@ def bitter_rivals(voting_dict):
         >>> br == ('Fox-Epstein', 'Ravella') or br == ('Ravella', 'Fox-Epstein')
         True
     """
-    return (..., ...)
+    pre_record = None
+    key_name = None
+    rival_name = None
+    for key in voting_dict.keys():
+        rival = least_similar(key, voting_dict)
+        new_dict = {key:voting_dict[key], least_similar:voting_dict[rival]}
+        if pre_record == None:
+            key_name = key
+            rival_name = rival
+            pre_record = policy_compare(key, least_similar, new_dict)
+        current_record = policy_compare(key, least_similar, new_dict)
+        if pre_record > current_record:
+            pre_record = current_record
+            key_name = key
+            rival_name = rival
+
+    return (rival_name, key_name)
 
